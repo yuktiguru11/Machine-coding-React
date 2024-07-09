@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 // import './Rating.css';
 
 
-const Rating = (props) => {
+const Rating = () => {
     const emptyIcon =  '/icons/emptyIcon.svg';
     const filledIcon =  '/icons/filledIcon.svg';
     const halfFilledIcon =  '/icons/halfFilled.svg';
@@ -19,6 +19,7 @@ const Rating = (props) => {
 
     const handleMouseHover = (index)=>{
         setHoveredIndex(index);
+        console.log(hoveredIndex)
     }
 
     const handleMouseLeave = ()=>{
@@ -61,8 +62,8 @@ const Rating = (props) => {
                     className="rating-image"
                     data-testid="rating-icon"
                     alt="Rate"
-                    onMouseEnter={()=>(
-                        setHoveredIndex(index)
+                    onMouseOver={(index)=>(
+                        handleMouseHover(index)
                     )}
                     onMouseLeave={handleMouseLeave}
                     />
