@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import './Rating.css';
+// import './Rating.css';
+
 
 const Rating = (props) => {
-    const emptyIcon =  '/icons/stars/empty.svg';
-    const filledIcon =  '/icons/stars/filled.svg';
-    const halfFilledIcon =  '/icons/stars/half.svg';
+    const emptyIcon =  '/icons/emptyIcon.svg';
+    const filledIcon =  '/icons/filledIcon.svg';
+    const halfFilledIcon =  '/icons/halfFilled.svg';
     
     const[hoveredIndex, setHoveredIndex] = useState(-1);
     // Utility function to calculate if the mouse event happened on the left side of the target or the right side.
@@ -24,9 +25,35 @@ const Rating = (props) => {
         setHoveredIndex(-1);
     }
 
-    const renderSymbol = () => {
-        return (
-            <>
+    // const renderSymbol = () => {
+    //     return (
+    //         <>
+    //         <div className='star-rating'>
+    //             {[...Array(5)].map((index)=>(
+    //                 <img key= {index}
+    //                     src={hoveredIndex > -1  ? filledIcon : emptyIcon}
+    //                 className="rating-image"
+    //                 data-testid="rating-icon"
+    //                 alt="Rate"
+    //                 onMouseEnter={()=>(
+    //                     setHoveredIndex(index)
+    //                 )}
+    //                 onMouseLeave={handleMouseLeave}
+    //                 />
+    //             ))}
+    //         </div>
+            
+    //         </>
+    //     )
+    // }
+
+    return (
+        <div
+            tabIndex="0"
+            className="star-rating"
+            data-testid="star-rating-container"
+        >
+           
             <div className='star-rating'>
                 {[...Array(5)].map((index)=>(
                     <img key= {index}
@@ -42,19 +69,6 @@ const Rating = (props) => {
                 ))}
             </div>
             
-            </>
-        )
-    }
-
-    return (
-        <div
-            tabIndex="0"
-            className="star-rating"
-            data-testid="star-rating-container"
-        >
-            {
-                renderSymbol()
-            }
         </div>
     )
 };
