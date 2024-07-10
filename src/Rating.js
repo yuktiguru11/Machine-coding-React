@@ -7,7 +7,8 @@ const Rating = () => {
     const filledIcon =  '/icons/filledIcon.svg';
     const halfFilledIcon =  '/icons/halfFilled.svg';
     
-    const[hoveredIndex, setHoveredIndex] = useState(-1);
+    const[hoveredIndex, setHoveredIndex] = useState(emptyIcon);
+    const[index, setIndex] = useState(0);
     // Utility function to calculate if the mouse event happened on the left side of the target or the right side.
     const isLessThanHalf = (event) => {
         const {target} = event;
@@ -54,21 +55,25 @@ const Rating = () => {
             className="star-rating"
             data-testid="star-rating-container"
         >
-           
-            <div className='star-rating'>
                 {[...Array(5)].map((index)=>(
                     <img key= {index}
-                        src={hoveredIndex > -1  ? filledIcon : emptyIcon}
+                        src={hoveredIndex }
+
                     className="rating-image"
                     data-testid="rating-icon"
-                    alt="Rate"
+                    alt="Rate" 
+                    
                     onMouseOver={(index)=>(
-                        handleMouseHover(index)
+                        
+                        setHoveredIndex(filledIcon)
                     )}
-                    onMouseLeave={handleMouseLeave}
+                    onMouseLeave={(index)=>(
+                        setHoveredIndex(emptyIcon)
+                        
+                    )}
+
                     />
                 ))}
-            </div>
             
         </div>
     )
