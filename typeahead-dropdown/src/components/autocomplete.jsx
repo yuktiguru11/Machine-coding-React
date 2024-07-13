@@ -70,7 +70,7 @@ function Autocomplete ({
             
             />
             {error && <div className="error" >{error}</div>}
-            {loading && <div className="loading" >{loading}</div>}
+            {loading && <div className="loading" >{customLoader}</div>}
         </div>
         </>
     )
