@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./styles.css";
 import SuggestionList from "./suggestion-list";
+import { useDebounce } from "../hooks/use-debounce";
 
 function Autocomplete({
   staticData,
@@ -15,6 +16,7 @@ function Autocomplete({
   customStyles = {},
 }) {
   const [inputValue, setInputValue] = useState("");
+  const debouncedValue = useDebounce(inputValue)
   const [suggestion, setSuggestion] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -47,11 +49,11 @@ function Autocomplete({
 
   useEffect(() => {
     if (inputValue.length > 1) {
-      getSuggestionData(inputValue);
+      getSuggestionData(debouncedValue);
     } else {
       setSuggestion([]);
     }
-  }, [inputValue]);
+  }, [debouncedValue]);
 
   const handleSuggestionClick = (suggestion) => {
     setInputValue(dataKey ? suggestion[dataKey]: suggestion);
@@ -78,7 +80,7 @@ function Autocomplete({
             {loading && <div className="loading">{customLoader}</div>}
             <SuggestionList
               suggestion={suggestion}
-              highlight={inputValue}
+              highlight={debouncedValue}
               dataKey={dataKey}
               onSuggestionClick={handleSuggestionClick}
             />
