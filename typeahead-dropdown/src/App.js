@@ -2,13 +2,13 @@ import Autocomplete from './components/autocomplete'
 
 function App() {
 
-  const staticData = [
-    "apple pie",
-    "chocolate shake",
-    "pizza",
-    "passta",
-    "coffee"
-  ]
+  // const staticData = [
+  //   "apple pie",
+  //   "chocolate shake",
+  //   "pizza",
+  //   "passta",
+  //   "coffee"
+  // ]
 
   const requestUrl = 'https://dummyjson.com/recipes/search?q='
   const fetchSuggestion = async (query)=>{
@@ -16,7 +16,7 @@ function App() {
     if(!response.ok){
       throw new Error("Cant fetch Suggestion")
     }
-    const results = await response.json;
+    const results = await response.json();
     return results.recipes;
   }
   //const customStyles = '';
