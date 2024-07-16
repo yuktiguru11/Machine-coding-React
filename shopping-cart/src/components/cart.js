@@ -1,5 +1,7 @@
 
 const Cart = ({state, dispatch})=>{
+    const {cart } = state;
+    const {total , setTotal} = useState(0)
     return (
         <>
         <div
@@ -11,7 +13,10 @@ const Cart = ({state, dispatch})=>{
             width: "20%",
         }}
         >
-            Cart</div>
+            <b style={{fonsize: 30,alignSelf:"center"}}>Cart</b>
+            <b style={{alignSelf:"center"}}>SubTotal : {total}</b>
+            
+        </div>
         </>
     )
 }
