@@ -30,6 +30,48 @@ const Products = ({ state, dispatch }) => {
               alt={prod.title}
               style={{ height: 200, objectFit: "cover" }}
             />
+            <div style={{display: "flex", justifyContent: "space-between"}}> 
+                <span>{prod.title}</span>
+                <b>$ {prod.price}</b>
+            </div>
+
+            {cart.some((p)=> p.id===prod.id) ?
+                <buton style={{
+                    padding: 5,
+                    border:0,
+                    bordeRadius:5,
+                    backgroundColor:"red",
+                    color:"white"
+                }}
+                onClick={()=>dispatch({
+                    type:"REMOVE_FROM_CART",
+                    payload:prod
+                })}
+                >
+                    Remove from Cart
+                </buton> :
+                <buton style={{
+                    padding: 5,
+                    border:0,
+                    bordeRadius:5,
+                    backgroundColor:"green",
+                    color:"white"
+                }}
+                onClick={()=>dispatch({
+                    type:"ADD_TO_CART",
+                    payload: {
+                        id: prod.id,
+                        title: prod.title,
+                        thumbnail: prod.thumbnail,
+                        quantity: prod.quantity,
+                        price: prod.price
+                    }
+                })}>
+                    Add to Cart
+                </buton>
+            }
+            
+            
           </div>
         ))}
       </div>
