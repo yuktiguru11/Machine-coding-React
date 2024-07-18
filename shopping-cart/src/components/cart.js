@@ -13,7 +13,7 @@ const Cart = ({state, dispatch})=>{
             width: "20%",
         }}
         >
-            <b style={{fonsize: 30,alignSelf:"center"}}>Cart</b>
+            <b style={{fontsize: 30,alignSelf:"center"}}>Cart</b>
             <b style={{alignSelf:"center"}}>SubTotal : {total}</b>
             
         </div>
