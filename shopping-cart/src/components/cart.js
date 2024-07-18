@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 const Cart = ({ state, dispatch }) => {
   const { cart } = state;
-  const { total, setTotal } = useState(0);
+  const [ total, setTotal ] = useState(0);
 
   const onQtyChange = (id, qty) => {
     dispatch({
