@@ -6,7 +6,7 @@ const Cart = ({ state, dispatch }) => {
 
   const onQtyChange = (id, qty) => {
     dispatch({
-      type: "Change_CART_QTY",
+      type: "CHANGE_CART_QTY",
       payload: id,
     });
   };

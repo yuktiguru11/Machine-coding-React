@@ -36,7 +36,7 @@ const Products = ({ state, dispatch }) => {
             </div>
 
             {cart.some((p)=> p.id===prod.id) ?
-                <buton style={{
+                <button style={{
                     padding: 5,
                     border:0,
                     bordeRadius:5,
@@ -49,8 +49,8 @@ const Products = ({ state, dispatch }) => {
                 })}
                 >
                     Remove from Cart
-                </buton> :
-                <buton style={{
+                </button> :
+                <button style={{
                     padding: 5,
                     border:0,
                     bordeRadius:5,
@@ -63,12 +63,12 @@ const Products = ({ state, dispatch }) => {
                         id: prod.id,
                         title: prod.title,
                         thumbnail: prod.thumbnail,
-                        quantity: prod.quantity,
+                        qty: 1,
                         price: prod.price
                     }
                 })}>
                     Add to Cart
-                </buton>
+                </button>
             }
             
             

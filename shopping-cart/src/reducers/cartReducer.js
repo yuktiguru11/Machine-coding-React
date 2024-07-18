@@ -9,9 +9,12 @@ export const cartReducer = (state, action)=>{
         case "REMOVE_FROM_CART":{
             return {...state, cart:state.cart.filter((c)=>{return c.id !== action.payload.id})}
         }
+        case "CHANGE_CART_QTY": {
+            return {...state , cart:state.cart.filter((c)=>{return c.id == action.payload.id ? c.qty = action.payload.qty : c.qty})}
+        }
 
     default:
-    break;
+        return state;
     }
     
 }
