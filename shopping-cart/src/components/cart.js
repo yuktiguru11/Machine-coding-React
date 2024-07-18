@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Cart = ({ state, dispatch }) => {
   const { cart } = state;
@@ -10,6 +10,13 @@ const Cart = ({ state, dispatch }) => {
       payload: id,
     });
   };
+
+  useEffect(() => {
+    setTotal(
+      cart.reduce((acc, curr) => acc + Number(curr.price) * curr.qty, 0)
+    );
+  }, [cart]);
+
   return (
     <>
       <div
