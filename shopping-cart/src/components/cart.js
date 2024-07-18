@@ -3,6 +3,13 @@ import { useState } from "react";
 const Cart = ({ state, dispatch }) => {
   const { cart } = state;
   const { total, setTotal } = useState(0);
+
+  const onQtyChange = (id, qty) => {
+    dispatch({
+      type: "Change_CART_QTY",
+      payload: id,
+    });
+  };
   return (
     <>
       <div
@@ -49,6 +56,15 @@ const Cart = ({ state, dispatch }) => {
                     <b>$ {prod.price}</b>
                   </div>
                 </div>
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <button onClick={() => onQtyChange(prod.id, prod.qty + 1)}>
+                    +
+                  </button>
+                  <span>{prod.qty}</span>
+                  <button onClick={() => onQtyChange(prod.id, prod.qty - 1)}>
+                    -
+                  </button>
+                </div>
               </div>
             ))
           ) : (
@@ -56,11 +72,6 @@ const Cart = ({ state, dispatch }) => {
               Cart is empty
             </span>
           )}
-        </div>
-        <div style={{display:"flex", alignItems:"center", gap:10}}>
-          <button onClick={()=>onQtyChange(prod.id,prod.qty+1)}>+</button>
-          <span>{prod.qty}</span>
-          <button onClick={()=>onQtyChange(prod.id,prod.qty-1)}>-</button>
         </div>
       </div>
     </>
