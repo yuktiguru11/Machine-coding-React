@@ -8,8 +8,8 @@ const Home = () => {
     useEffect(()=>{
       fetch('https://dummyjson.com/products').then(res => res.json())
       .then((result)=>{
-        setProductData(result.products)
-        console.log(productData)
+        const slicedTrendingProducts = result.products.slice(0, 6);
+        setProductData(slicedTrendingProducts)
       })
     },[])
 
@@ -28,6 +28,10 @@ const Home = () => {
                         </div>
                 ))}
             </div>
+
+            <Link to="/products">
+        <button style={{width: "100%", padding: 10}}>View All Products</button>
+      </Link>
 
         </div>
         </>
