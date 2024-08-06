@@ -13,7 +13,8 @@ useEffect(()=>{
   },[])
 
     return(
-        {product:(
+        <>
+        {product ?(
             <div style={{display: "flex"}}>
                 <img style = {{height: 300}}src={product.thumbnail}></img>
                 <div>
@@ -23,7 +24,10 @@ useEffect(()=>{
                 </div>
                 </div>
             
+        ) : (
+            <p>Loading..</p>
         )}
+        </>
         
     )
 }
