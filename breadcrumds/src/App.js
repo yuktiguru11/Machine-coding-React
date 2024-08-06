@@ -1,17 +1,11 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import { useEffect } from "react";
 import Home from "./pages/Home";
 import ProductDetail from "./pages/ProductDetail";
 import ProductsList from "./pages/ProductsList";
 
 function App() {
 
-  useEffect(()=>{
-    fetch('https://dummyjson.com/products').then(res => res.json())
-    .then((result)=>{
-      console.log(result)
-    })
-  },[])
+
 
   return (
     <BrowserRouter>
