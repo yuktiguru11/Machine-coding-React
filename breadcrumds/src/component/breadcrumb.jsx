@@ -9,7 +9,7 @@ const BreadCrumb =()=>{
       <div className="breadcrumbs">
         <Link to="/">Home</Link>
         {pathnames.map((name, index)=>{
-             breadcrumbs += `/$(name)`;
+             breadcrumbs += '/'+name;
             const isLast = index === pathnames.length-1;
             return isLast ? (
                 <span key ={breadcrumbs}>/ {name}</span>
