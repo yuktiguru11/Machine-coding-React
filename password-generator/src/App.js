@@ -1,4 +1,5 @@
 import OtpLogin from "./component/OtpLogin";
+import "./App.css"
 
 function App() {
   return (

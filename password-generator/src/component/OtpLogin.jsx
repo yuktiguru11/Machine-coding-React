@@ -13,7 +13,7 @@ const OtpLogin = ()=>{
         e.preventDefault()
         //handle phone number validation
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        if( emailRegex.test(email)){
+        if( !emailRegex.test(email)){
             alert("Invalid mail id");
             return ;
         }
@@ -31,7 +31,7 @@ const OtpLogin = ()=>{
         <>
         {!otpLogin ? (<form onSubmit={handleSubmit}>
             <input type ="text"
-            value={email} onchange={handleChange}></input>
+            value={email} onChange={handleChange}></input>
             <button type = "submit">Submit</button>
         </form>) : 
         (<div>
