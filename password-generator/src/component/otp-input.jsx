@@ -20,7 +20,7 @@ const OtpInput = ({length = 4, onOtpSubmit = ()=>{}})=>{
 
     const handleClick =()=>{
 
-    }
+    } 
 
     const handleKeyDown =()=>{
 
