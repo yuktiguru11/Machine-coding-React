@@ -28,12 +28,15 @@ const OtpInput = ({length = 4, onOtpSubmit = ()=>{}})=>{
         }
     }
 
-    const handleClick =()=>{
-
+    const handleClick =(index)=>{
+        currentRef.current[index].setSelectionRange(1,1)
     } 
 
-    const handleKeyDown =()=>{
-
+    const handleKeyDown =(index, e)=>{
+        const value = e.target.value
+        if (e.key === 'Backspace' && index>0 && !otp[index] && currentRef.current[index-1]){
+            currentRef.current[index-1].focus();
+        }
     }
 
     return (
@@ -43,7 +46,7 @@ const OtpInput = ({length = 4, onOtpSubmit = ()=>{}})=>{
             ref={(input)=>(currentRef.current[index] = input)} type="text" key={index} value={value}
             onChange={(event)=>handleChange(index,event)}
             onClick = {()=>handleClick(index) }
-            onKeyDown={()=>handleKeyDown(index)} className="otpInput">
+            onKeyDown={(event)=>handleKeyDown(index,event)} className="otpInput">
             </input>
         ))}
         </>
