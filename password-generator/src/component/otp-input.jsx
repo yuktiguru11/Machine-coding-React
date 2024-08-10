@@ -14,8 +14,18 @@ const OtpInput = ({length = 4, onOtpSubmit = ()=>{}})=>{
         if(isNaN(value)) return ;
 
         const newOtp = [...otp];
-        newOtp[index]=value.substring(value.length-1);
+        newOtp[index]=value.substring(value.length-1); //allow only last input
         setOtp(newOtp);
+        console.log(otp);
+
+        //trigger Submit
+        const combinedOtp = newOtp.join("");
+        if(combinedOtp.length === length) onOtpSubmit(combinedOtp);
+
+        //when filling OTP it should directly move to the next input
+        if (value && index<length-1 && currentRef.current[index+1]){
+            currentRef.current[index+1].focus();
+        }
     }
 
     const handleClick =()=>{
