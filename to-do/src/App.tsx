@@ -2,20 +2,23 @@ import { useState } from "react";
 
 function App() {
   const [input, setInput ] = useState<string >("")
-  const array : string[] = []
+  const [toDoarray, setToDoArray]  = useState<string[]>([])
 
   const handleOnChange =(e : React.ChangeEvent<HTMLInputElement>)=>{
     setInput(e.target.value)
+
   }
 
   const handleSubmit = (e : React.MouseEvent<HTMLButtonElement>)=>{
-    array.push(input)
+    setToDoArray([...toDoarray, input]);
+    setInput("");
+
   }
   return (
     <div>
-      <input type="text" onChange={handleOnChange} />
+      <input type="text" value={input} onChange={handleOnChange} />
       <button onClick={handleSubmit}>Submit</button>
-      {array.map((arr)=>(
+      {toDoarray.map((arr)=>(
         <div>{arr}</div>
             
          
