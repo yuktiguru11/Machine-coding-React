@@ -47,7 +47,7 @@ const OtpInput = ({length = 4, onOtpSubmit = ()=>{}})=>{
             onChange={(event)=>handleChange(index,event)}
             onClick = {()=>handleClick(index) }
             onKeyDown={(event)=>handleKeyDown(index,event)} className="otpInput">
-            </input>
+            </input> 
         ))}
         </>
     )
