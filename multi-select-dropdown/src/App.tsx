@@ -1,24 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+
 
 function App() {
+  const [searchInput, setSearchInput] = useState<string>("");
+
+  const handleChange =(e : React.ChangeEvent<HTMLInputElement>)=>{
+    setSearchInput(e.target.value);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="user-search-cointainer">
+      <div className="user-search-input"> 
+    <div >
+     <input type="text" value={searchInput} onChange={handleChange}
+     placeholder="Search for User.."></input>
+    </div>
+    </div>
     </div>
   );
 }
