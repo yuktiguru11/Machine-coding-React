@@ -7,6 +7,8 @@ interface Item {
 function App() {
   const [input, setInput ] = useState<string >("")
   const [toDoarray, setToDoArray]  = useState<Item[]>([])
+  const [inputId, setInputId ] = useState<number >(0)
+
 
   const handleOnChange =(e : React.ChangeEvent<HTMLInputElement>)=>{
     setInput(e.target.value)
@@ -14,26 +16,28 @@ function App() {
   }
 
   const handleSubmit = (e : React.MouseEvent<HTMLButtonElement>)=>{
-    let count : number = 0 
+    let newId = inputId+1;
     const newItem: Item = {
-      id: count+1,
+      id: newId,
       itemName : input
     }
     setToDoArray([...toDoarray, newItem]);
     setInput("");
+    setInputId(newId);
 
   }
 
-  const handleDelete = (e: React.MouseEvent<HTMLButtonElement>)=>{
-    console.log("test")
+  const handleDelete = (keyId : number)=>{
+    let filterData = toDoarray.filter((arr)=>arr.id !== keyId)
+    setToDoArray(filterData);
   }
   return (
     <div>
       <input type="text" value={input} onChange={handleOnChange} />
       <button onClick={handleSubmit}>Submit</button>
-      {toDoarray.map((arr)=>(
-        <div>{arr.itemName}
-        <button onClick={handleDelete}>Delete</button> 
+      {toDoarray?.map((arr)=>(
+        <div key={arr.id}>{arr.itemName}
+        <button onClick={()=>handleDelete(arr.id)}>Delete</button> 
         </div>
          
          
