@@ -29,7 +29,7 @@ function App() {
     //   setSearchSuggestion(res)
     // })
     axios.request<ServerResponse>({
-      url: 'https://example.com/path/to/data',
+      url: ep+searchInput,
       transformResponse: (r: ServerResponse) => r.data
     }).then((response) => {
       // `response` is of type `AxiosResponse<ServerData>`
