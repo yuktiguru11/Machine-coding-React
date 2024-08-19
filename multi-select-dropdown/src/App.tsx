@@ -15,6 +15,8 @@ function App() {
   const [searchInput, setSearchInput] = useState<string>("");
   const [searchSuggestion, setSearchSuggestion] = useState<User[]>([]);
   const debouncedValue = useDebounce(searchInput)
+  console.log(debouncedValue)
+  
 
   const handleChange =(e : React.ChangeEvent<HTMLInputElement>)=>{
     e.preventDefault();
