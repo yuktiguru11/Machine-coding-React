@@ -6,9 +6,6 @@ interface User {
   firstName: string;
   lastName : string; 
 }
-interface ServerResponse {
-  data : User
-}
 
 
 function App() {
@@ -16,7 +13,7 @@ function App() {
   const [searchSuggestion, setSearchSuggestion] = useState<User[]>([]);
   const debouncedValue = useDebounce(searchInput)
   console.log(debouncedValue)
-  
+
 
   const handleChange =(e : React.ChangeEvent<HTMLInputElement>)=>{
     e.preventDefault();
@@ -30,15 +27,19 @@ function App() {
       setSearchSuggestion([]); 
       return;
     }
-    axios.request<ServerResponse>({
-      url: ep+debouncedValue,
-      transformResponse: (r: ServerResponse) => r.data
-    }).then((response) => {
-      // `response` is of type `AxiosResponse<ServerData>`
-      const { data } = response
-      // `data` is of type ServerData, correctly inferred
+
+    axios.get('https://dummyjson.com/users/search?q='+searchInput)
+    .then(response => {
+        // Extract `firstname` and `lastname` for each user in the response
+        const users: User[] = response.data.users.map((user: any) => ({
+            firstname: user.firstname,
+            lastname: user.lastname,
+        }));
+        setSearchSuggestion(users);
     })
   },[debouncedValue])
+
+
 
   return (
     <div className="user-search-cointainer">
@@ -46,6 +47,9 @@ function App() {
     <div >
      <input type="text" value={searchInput} onChange={handleChange}
      placeholder="Search for User.."></input>
+     {setSearchSuggestion?.map((user : User[])=>{
+      
+     })}
     </div>
     </div>
     </div>
